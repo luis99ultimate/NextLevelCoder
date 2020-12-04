@@ -7,3 +7,5 @@
 * bullet: https://opengameart.org/content/bullet-collection-2-m484-games
 * town4.mp3: https://opengameart.org/content/town-4
 * rifle.ogg: https://opengameart.org/content/laser-rifle
+* powerup.png: http://pixelartmaker.com/art/61d8406b9f00c56
+* superbullet.png: https://www.vhv.rs/viewpic/iobbxmo_heart-pixel-art-hd-png-download/

@@ -3,11 +3,17 @@ import pygame
 from components.ball import Ball
 
 from components.player import Player
+
+from components.powerup import Powerup
+
+from components.superbullet import Superbullet
+
 from utils.constants import (
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
     TITLE,
     BLACK,
+    GREEN,
     IMG_DIR
 )
 
@@ -24,6 +30,9 @@ class Game:
         self.clock = pygame.time.Clock()
         self.playing = False
         self.running = True
+        pygame.mixer.init()
+        pygame.mixer.music.load(path.join(IMG_DIR, "town4.mp3"))
+        pygame.mixer.music.play(-1)
 
     def run(self):
         self.create_components()
@@ -43,6 +52,10 @@ class Game:
         ball = Ball(1)
         self.all_sprites.add(ball)
         self.balls.add(ball)
+        self.powerups = pygame.sprite.Group()
+        powerup = Powerup()
+        self.all_sprites.add(powerup)
+        self.powerups.add(powerup)
 
     def update(self):
         self.all_sprites.update()
@@ -56,6 +69,9 @@ class Game:
                     ball = Ball(hit.size + 1)
                     self.all_sprites.add(ball)
                     self.balls.add(ball)
+        powerhit = pygame.sprite.spritecollide(self.player, self.powerups, False)
+        if powerhit:
+            self.player.supershoot()
 
     def events(self):
          for event in pygame.event.get():
@@ -74,7 +90,7 @@ class Game:
 
     def show_start_screen(self):
         self.screen.blit(self.background_img, self.background_img.get_rect())
-        draw_text(self.screen, "Game Working!!", 64, SCREEN_WIDTH/2, SCREEN_HEIGHT/4)
+        draw_text(self.screen, "Space Warrior!!", 64, SCREEN_WIDTH/2, SCREEN_HEIGHT/4)
         draw_text(self.screen, "Presiona las teclas direccionales y SPACE para disparar", 20, SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
         draw_text(self.screen, "Press ENTER key to begin", 20, SCREEN_WIDTH/2, SCREEN_HEIGHT*3/5)
         pygame.display.flip()

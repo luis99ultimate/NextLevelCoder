@@ -9,6 +9,7 @@ from utils.constants import (
 )
 
 from components.bullet import Bullet
+from components.superbullet import Superbullet
 from os import path
 
 class Player(pygame.sprite.Sprite):
@@ -36,6 +37,15 @@ class Player(pygame.sprite.Sprite):
             self.rect.left = 0
 
     def shoot(self):
+        sound_rifle = pygame.mixer.Sound(path.join(IMG_DIR, "rifle.ogg"))
+        pygame.mixer.Sound.play(sound_rifle)
         bullet = Bullet(self.rect.centerx, self.rect.top)
         self.game.all_sprites.add(bullet)
         self.bullets.add(bullet)
+
+    def supershoot(self):
+        sound_rifle = pygame.mixer.Sound(path.join(IMG_DIR, "rifle.ogg"))
+        pygame.mixer.Sound.play(sound_rifle)
+        superbullet = Superbullet(self.rect.centerx, self.rect.top)
+        self.game.all_sprites.add(superbullet)
+        self.bullets.add(superbullet)
