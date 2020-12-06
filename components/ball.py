@@ -4,7 +4,6 @@ import random
 from os import path
 
 from utils.constants import (
-    BLUE,
     BLACK,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,

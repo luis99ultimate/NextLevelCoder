@@ -9,3 +9,4 @@
 * rifle.ogg: https://opengameart.org/content/laser-rifle
 * powerup.png: http://pixelartmaker.com/art/61d8406b9f00c56
 * superbullet.png: https://www.vhv.rs/viewpic/iobbxmo_heart-pixel-art-hd-png-download/
+* dangerouslaser.png: http://pixelartmaker.com/art/32194e369f51794

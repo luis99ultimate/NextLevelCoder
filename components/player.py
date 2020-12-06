@@ -1,8 +1,8 @@
 import pygame
 
 from utils.constants import (
-    GREEN,
     BLACK,
+    WHITE,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
     IMG_DIR
@@ -35,6 +35,14 @@ class Player(pygame.sprite.Sprite):
             self.rect.x -= 5
         if self.rect.left < 0:
             self.rect.left = 0
+        if key[pygame.K_UP]:
+            self.rect.top -= 5
+        if self.rect.y < 330:
+            self.rect.top = 330
+        if key[pygame.K_DOWN]:
+            self.rect.bottom += 5
+        if self.rect.bottom > SCREEN_HEIGHT:
+            self.rect.bottom = SCREEN_HEIGHT
 
     def shoot(self):
         sound_rifle = pygame.mixer.Sound(path.join(IMG_DIR, "rifle.ogg"))
@@ -43,9 +51,17 @@ class Player(pygame.sprite.Sprite):
         self.game.all_sprites.add(bullet)
         self.bullets.add(bullet)
 
-    def supershoot(self):
+    def super_shoot(self):
         sound_rifle = pygame.mixer.Sound(path.join(IMG_DIR, "rifle.ogg"))
         pygame.mixer.Sound.play(sound_rifle)
-        superbullet = Superbullet(self.rect.centerx, self.rect.top)
-        self.game.all_sprites.add(superbullet)
-        self.bullets.add(superbullet)
+        super_bullet = Superbullet(self.rect.centerx, self.rect.top)
+        self.game.all_sprites.add(super_bullet)
+        self.bullets.add(super_bullet)
+
+    def show_timer(self):
+        font1 = pygame.font.SysFont("arial", 20, True, False)
+        seconds = pygame.time.get_ticks() // 1000
+        seconds = str(seconds)
+        timer = font1.render(seconds, 0, (WHITE))
+        self.screen.blit(timer, (50, 5))
+        pygame.display.flip()

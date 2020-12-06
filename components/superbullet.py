@@ -5,7 +5,6 @@ import random
 from os import path
 
 from utils.constants import (
-    RED,
     SCREEN_HEIGHT,
     SCREEN_WIDTH,
     IMG_DIR,

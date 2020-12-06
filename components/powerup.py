@@ -4,15 +4,13 @@ import random
 
 from utils.constants import (
     SCREEN_WIDTH,
-    SCREEN_HEIGHT,
-    WHITE,
     BLACK,
     IMG_DIR
 )
 
 from os import path
 
-allowed_speed = list(range(4, 5))
+allowed_speed = list(range(3, 4))
 class Powerup(pygame.sprite.Sprite):
 
     def __init__(self):
